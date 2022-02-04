@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Playfair+Display:wght@600&display=swap');
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+nav{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 5px solid #353434;
+}
+
+nav h1{
+    color: rgb(92, 91, 91);
+    font-family: 'Playfair Display', sans-serif;
+    font-size: 30px;
+}
+nav .onglets{
+    margin-top: 3px;
+    margin-left: 300px;
+}
+nav .onglets a{
+    text-decoration: none;
+    color: #000;
+    margin-right: 10px;
+    border-bottom: 1px solid #000;
+    padding-bottom: 5px;
+}
+@media screen and (max-width: 680px){
+    nav.onglets{
+        margin-top: 0px;
+        margin-bottom: 20px;
+    }
+}
+header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: url('https://emotionsnumeriques.files.wordpress.com/2017/04/srjc9512.jpg?w=640');
+    background-size: cover;
+    color: white;
+    padding: 40px;
+}
+header h1{
+    font-family: 'Playfair Display', sans-serif;
+    font-size: 50px;
+}
+header h4{
+    margin-top: -20px;
+    font-size: 20px;
+    text-align: center;
+    border-bottom: 1px solid rgb(248, 248, 248)
+}
+header button{
+    padding: 10px 20px;
+    background-color: white;
+    color:#000;
+    border: none;
+    font-size: 20px;
+    font-family: 'Playfair Display', sans-serif;
+    outline: none;
+    cursor: pointer;
+}
+
+p{
+    margin: 40px;
+    text-align: center;
+}
+
+
+
+.main{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.main .content .card .right .img{
+    height:300px;
+    width:400px;
+    margin-top: 5px;
+}
+.main .content .card{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.main .content .card .left{
+    flex: 0 0 30%;
+    padding: 20px;
+    background-color: #727070;
+    color: white;
+}
+.main .content .card.right{
+    flex: 0 0 70%;
+}
+footer{
+    margin-top: 0px;
+    border-top: 5px solid #6f6f6f;
+    background-color: black;
+    color: white;
+    padding: 30px 100px;
+}
+footer h1{
+    font-family: 'Playfair Display', sans-serif;
+    border-bottom: 1px solid white;
+    width: 20%;
+    padding-bottom: 5px;
+}
