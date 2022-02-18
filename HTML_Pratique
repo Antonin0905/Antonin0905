@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Projet PAL</title>
+</head>
+<body>
+    <h1 style="font-family: arial, helvatica, sans-serif;">Buffer sur une forme géométrique</h1>
+    <form method="post" action="#" onchange="AfficheRange()" onkeyup="AfficheRange()">
+        <fieldset>
+            <input id="Range" type="range" step="1" value="0" min="0" max="50">
+            <span id="AfficheValue">Valeur=0</script></span>
+        </fieldset>
+    </form>
+    <canvas id="canvas1" width="600" height="400" style="border:5px solid black;"></canvas>
+    <button id="reset">Reset</button>
+    <input type="button" value="Sauvegarder" onclick="save();" />&nbsp;
+    <button id="buffer">Générer un buffer</button>
+
+
+    
+    <script src="java.js"></script>
+</body>
+</html>
