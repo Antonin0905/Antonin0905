@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="AB.css">
+    <title>Projet Informatique</title>
+</head>
+<body>
+    <nav>
+        <h1>Morpho-Mathématiques</h1>
+        <div class="onglets">
+            <a href="">Home</a>
+            <a href="#dilatation/erosion">Dilatation/Erosion</a>
+            <a href="#ouverture/fermeture">Ouverture/Fermeture</a>
+            <a href="#pratique">Pratique</a>
+            <a href="#QUIZZ">QUIZZ</a>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Morpho-Mathématiques</h1>
+    </header>
+    <section id="dilatation/erosion">
+        <h2>DILATATION - EROSION</h2>
+        <hr width="50%" color="black">
+    </section> 
+
+    <section class="main1">
+
+        <div class="dilatation">
+
+            <div class="card">
+                <div class="left">
+                    <h1>La Dilatation</h1>
+                    <p>Une dilatation morphologique consiste à déplacer l'élément structurant sur chaque 
+                        pixel de l'image, et à regarder si l'élément structurant « touche » (ou plus formellement intersecte)
+                        la structure d'intérêt. Le résultat est une structure qui plus grosse que la structure d'origine 
+                        (Figure ci-dessous). En fonction de la taille de l'élément structurant, certaines particules peuvent 
+                        se trouver connectées, et certains trous disparaître.</p>
+                </div>
+                <div class="right">
+                    <img id="imgDil" alt="image" src="dilation.PNG" width="750" height="400">
+        </div>
+    </section>
+
+    <p id="def">Soit X une figure, à savoir un ensemble de pixels. Pour un élément structurant B, la dilatation de X 
+        par B est l'ensemble obtenu en remplaçant chaque pixel p de X par sa fenêtre Bp : </p>
+<p id="formule">DilB(X) = {Bp | p X}.</p>
+
+
+    <img alt="image" src="schema1.PNG" width="350" height="350"class="centrer">
+
+<p id="def">En haut à gauche, la figure X, et à droite, l'élément structurant B (la boule noire indiquant la position du point de référence).
+    En bas à gauche, les fenêtres Bp pour un certain nombre de pixels p X. En bas à droite, la dilatation de X par B ; les coins convexes de
+     la figure deviennent biseautés par les côtés du triangle B. </p>
+
+
+    <section class="main2">
+        <div class="erosion">
+
+            <div class="card">
+                <div class="right">
+                    <img id="imgEro" src="erosion.png" width="750" height="400">
+                </div>
+                <div class="left">
+                    <h1>L'Erosion</h1>
+                    <p>L'érosion est l'opération inverse, qui est définie comme une dilatation du complémentaire de la structure.
+                        Elle consiste à chercher tous les pixels pour lesquels l'élément structurant centré sur ce pixel touche 
+                        l'extérieur de la structure. Le résultat est une structure rognée (Figure ci-dessous) . On observe la 
+                        disparition des particules plus petites que l'élément structurant utilisé, et la séparation éventuelle 
+                        des grosses particules.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <p id="def">Soit X une figure et B un élément structurant. L'érosion de X par B est l'ensemble des pixels p tels que la fenêtre Bp est
+         incluse dans X : </p>
+<p id="formule">ErosB(X) = {p | Bp X}.</p>
+
+    <img alt="image" src="schema2.PNG" width="400" height="200"class="centrer">
+
+<p id="def">On considère les mêmes figure X et élément structurant B que plus haut. À gauche, plusieurs positions (boules noires) de pixels p 
+    dont les fenêtres Bp sont incluses dans X. À droite, l'érosion de X par B ; les coins concaves de la figure deviennent biseautés par les côtés
+     du triangle B </p>
+
+
+     <section id="ouverture/fermeture">
+     <h2>FERMETURE - OUVERTURE</h2>
+    </section>
+
+    <hr width="50%" color="black">
+
+<p id="fermeture">L'érosion et la dilatation ont l'inconvénient de modifier fortement la taille des structures dans l'image. Pour réduire cet effet, on les
+     utilise souvent en combinaison. On définit ainsi la fermeture morphologique comme une dilatation suivie d'une érosion. La fermeture a pour effets :</p>
+<p id="tiret">1. de faire disparaître les trous de petite taille dans les structures</p>
+<p id="tiret">2. de connecter les structures proches</p>
+
+<img id="imgOuvFer" alt="image" src="fermeture.PNG" width="450" height="250"class="centrer">
+
+<p id="fermeture">De manière duale on définit l'ouverture morphologique comme une érosion suivie d'une dilatation. L'ouverture a pour effets :</p>
+<p id="tiret">1. de faire disparaître les petites particules (dont la taille est inférieure à celle de l'élément structurant)</p>
+<p id="tiret">2. de séparer les grosses particules aux endroits où elles sont plus fines</p>
+
+<img id="imgOuvFer" alt="image" src="ouverture.PNG" width="450" height="250"class="centrer">
+
+<p id="fermeture">L'ouverture et la fermeture morphologique ont une propriété d'idempotence : le résultat ne change pas si on applique plusieurs fois
+    l'opérateur, il suffit de l'appliquer une seule fois.
+    L'ouverture et la fermeture morphologique changent relativement peu la forme des grosses particules. Par contre, elle permettent
+     de faire disparaitre facilement les petites particules isolées, ou les petits trous à l'intérieur des structures. On les utilise
+      donc souvent pour nettoyer le résultat d'une binarisation.</p>
+
+
+      <section id="pratique">
+<h3>Pratique</h3>
+      </section>
+
+<hr width="30%" color="black">
+
+    <div class="pratique">
+
+
+
+    </div>
+
+
+
+
+    <section class="main" id="voronois">
+
+       
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <footer>
+
+        <h1>Pied de page</h1>
+
+        <p id="contact">Antonin BOURON, Lucas DELESCAUT, Pacome SIBILLE | &copy; ENSG Géometre Geomaticien</p>
+    </footer>
+
+    <script src="AB.js"></script>
+</body>
+
+</html>
