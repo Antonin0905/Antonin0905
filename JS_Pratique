@@ -1,0 +1,158 @@
+var canvas=document.getElementById("canvas1");
+var ctx=canvas.getContext("2d");
+var reset = document.getElementById("reset");
+var buffer = document.getElementById("buffer");
+var rayon = document.getElementById("Range").value;
+
+function AfficheRange() {
+   var rayon=document.getElementById("Range").value;
+   document.getElementById("AfficheValue").innerHTML="Valeur="+rayon;
+   //console.log(rayon);
+};
+
+
+ctx.moveTo(0, 50); 
+ctx.lineTo(canvas.width, 50); 
+
+
+function cadrillage(){
+   ctx.beginPath();
+   var ecart = 50;                                         //largeur d'un côté des cases
+   //lignes
+   for(var h = ecart ; h < canvas.height ; h += ecart) {
+      ctx.moveTo(0, h);                                    //déplace le pinceau à (x,y) sans tracer
+      ctx.lineTo(canvas.width, h);                         //trace jusqu'à (x,y)
+   }
+   //colonnes
+   for(var w = ecart ; w < canvas.width ; w += ecart) {
+      ctx.moveTo(w, 0);
+      ctx.lineTo(w, canvas.height);
+   }
+   ctx.strokeStyle="black";
+   ctx.stroke();
+   ctx.closePath(); 
+};
+cadrillage();
+defaut();
+
+//dessiner une forme géométrique dans le canvas
+function defaut(){
+    ctx.beginPath();   // debut du chemin pour dessiner la forme   
+    ctx.moveTo(225, 125);  //on utilise les coordonnées pour faire le tracer de la forme
+    ctx.lineTo(350, 125);
+    ctx.lineTo(400, 200);
+    ctx.lineTo(280, 300);
+    ctx.lineTo(180, 250);
+    ctx.lineTo(150, 180);    
+    ctx.closePath();        // ferme la forme géométrique
+    ctx.strokeStyle='blue';
+    ctx.stroke();
+    points = new Array((225, 125),(350, 125),(400, 200),(280, 300),(180, 250),(150, 180));
+};
+
+
+//fonction qui permet d'actualiser le polygone en cliquant
+reset.addEventListener('click', function genererCanva(e) {
+   console.log("j'ai appuyé");
+   ctx.fillStyle='white';
+   ctx.fillRect(0,0,canvas.width,canvas.height);
+   cadrillage();
+   points = null;
+});
+
+//radius of click around the first point to close the draw
+var END_CLICK_RADIUS = 20;
+//the max number of points of your poygon
+var MAX_POINTS = 8;
+
+var mouseX = 0;
+var mouseY = 0;
+var isStarted = false;
+var points = null;
+
+canvas.addEventListener("click", function(e) {
+   var x = e.clientX-canvas.offsetLeft;
+   var y = e.clientY-canvas.offsetTop;
+   if(isStarted) {
+      //drawing the next line, and closing the polygon if needed
+      if(Math.abs(x - points[0].x) < END_CLICK_RADIUS && Math.abs(y - points[0].y) < END_CLICK_RADIUS) {
+         isStarted = false;
+      } else {
+         points[points.length] = new Point(x, y);
+         if(points.length >= MAX_POINTS) {
+            isStarted = false;
+         }
+      }
+   } else if(points == null) {
+      //opening the polygon
+      points = new Array();
+      points[0] = new Point(x, y);
+      isStarted = true;
+   
+   }
+   draw();
+}, false);
+
+//we just save the location of the mouse
+canvas.addEventListener("mousemove", function(e) {
+   mouseX = e.clientX - canvas.offsetLeft;
+   mouseY = e.clientY - canvas.offsetTop;
+}, false);
+
+//refresh time
+//let t = setInterval("draw();", 100);
+
+//clearInterval(t);
+
+function Point(x, y) {
+   this.x = x;
+   this.y = y;
+}
+
+//draws the current chape
+function draw() {
+   ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+   cadrillage();
+   ctx.beginPath();
+
+   if(points != null && points.length > 0) {
+      ctx.moveTo(points[0].x, points[0].y);
+      
+      for(i = 1 ; i < points.length ; i++) {
+         ctx.lineTo(points[i].x, points[i].y);
+      }
+      
+      if(isStarted) {
+         ctx.lineTo(mouseX, mouseY);
+      } else {
+         ctx.lineTo(points[0].x, points[0].y);
+      }
+   }
+   ctx.strokeStyle = 'blue';
+   ctx.stroke();
+}
+
+function save() {
+   if(points == null) {
+      alert("Rien a sauvegarder !");
+   } else {
+      var s = "";
+      for(var a in points) {
+         //inversing y axis by (canvas.height - points[a].y)
+         s += "(" + points[a].x + "," + (canvas.height - points[a].y) + ")\n";
+      }
+      alert(s);
+   }
+}
+
+
+buffer.addEventListener("click", function(){
+   var rayon = document.getElementById("Range").value;
+   ctx.beginPath();
+   for (i=0; i<points.length; i++){
+      ctx.arc(points[i].x, points[i].y, rayon, 0, 2*Math.PI);
+   };
+   ctx.closePath();
+   ctx.stroke();
+});
