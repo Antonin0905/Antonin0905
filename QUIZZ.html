@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src='https://unpkg.com/@turf/turf@6/turf.min.js'></script>
+  <title>Quiz Morpho-Mathématique</title>
+  <link rel="stylesheet" href="QUIZZ.css">
+</head>
+
+<body>
+<!--BARRE D'OUTIL-->
+  <nav>
+    <h1>Morpho-Mathématiques</h1>
+    <div class="onglets">
+        <a href="AB.html">Home</a>
+        <a  href="#dilatation/erosion">Dilatation/Erosion</a>
+        <a  href="#ouverture/fermeture">Ouverture/Fermeture</a>
+        <a  href="#pratique">Pratique</a>
+        <a  href="QUIZZ.html">QUIZZ</a>
+    </div>
+</nav>
+
+<!--QUIZ-->
+
+
+  <div class="quiz-wrapper">
+    <div id="questionBox" class="question">
+    </div>
+    <div class="options">
+      <ul id="ul">
+            <li id="opt1" onclick="button(this)"></li>
+            <li id="opt2" onclick="button(this)"></li>
+            <li id="opt3" onclick="button(this)"></li>
+            <li id="opt4" onclick="button(this)"></li>
+      </ul>
+    </div>
+    <div class="score">
+        <div class="next">
+            <button id="btnNext" type="button" onclick="next()">
+          </button>
+        </div>
+        <div class="score-card">
+          SCORE: <span id="scoreCard">0</span>
+        </div>
+    </div>
+  </div>
+  <script src="QUIZZ.js"></script>
+</body>
+
+
+
+
+
+</html>
